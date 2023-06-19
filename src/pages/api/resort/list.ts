@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { RESORT_LIST } from '../../../../DATA/RESORT_LIST';
-import { delay } from '@/lib/delay';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -12,9 +11,10 @@ export default async function handler(
 	const filteredResort = RESORT_LIST.filter(
 		(resort) => resort.country_slug === country
 	);
-	await delay(2000);
+
 	if (country) {
 		res.status(200).json(filteredResort);
+	} else {
+		res.status(200).json(RESORT_LIST);
 	}
-	res.status(200).json(RESORT_LIST);
 }

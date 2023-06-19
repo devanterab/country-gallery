@@ -5,7 +5,7 @@ import s from './places.module.css';
 import Link from 'next/link';
 import { Gallery } from '@/components/gallery';
 
-export const Places = () => {
+export const Places = ({ country_list }: any) => {
 	return (
 		<section className="py-20 px-6">
 			<h2
@@ -26,7 +26,7 @@ export const Places = () => {
 				Contact us today to schedule a consultation and see
 				how we can help transform your space.
 			</p>
-			<Gallery />
+			<Gallery country_list={country_list} />
 		</section>
 	);
 };
