@@ -8,7 +8,8 @@ export default function App({ Component, pageProps }: AppProps) {
 		<>
 			{' '}
 			<Head>
-				<title>HELLO NEXTJS</title>
+				<title>The Best Resort</title>
+				<link rel="icon" href="/cool.svg" />
 			</Head>
 			<Layout>
 				<Component {...pageProps} />

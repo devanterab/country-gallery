@@ -1,4 +1,3 @@
-import { generateRandomImg } from '@/lib/generateRandomImg';
 import Image from 'next/image';
 import Link from 'next/link';
 import s from '../sections/places.module.css';

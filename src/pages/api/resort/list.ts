@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { RESORT_LIST } from '../../../../DATA/RESORT_LIST';
+import { delay } from '@/lib/delay';
 
 export default async function handler(
 	req: NextApiRequest,

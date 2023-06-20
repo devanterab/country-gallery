@@ -1,12 +1,20 @@
 import { generateRandomImg } from '@/lib/generateRandomImg';
+import Head from 'next/head';
 import Image from 'next/image';
 
 export default function Page({ resort_data }: any) {
 	return (
 		<main>
+			<Head>
+				<title>{resort_data.resort_name}</title>
+				<meta
+					name="description"
+					content={resort_data.resort_description}
+				/>
+			</Head>
 			<Image
 				src={resort_data.image_url}
-				alt={resort_data.name}
+				alt={resort_data.resort_name}
 				width={1440}
 				height={900}
 				className="w-full max-h-[70vh] object-cover"
