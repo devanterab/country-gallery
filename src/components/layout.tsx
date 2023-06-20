@@ -18,6 +18,12 @@ export const Layout = ({
 					>
 						Resort List
 					</Link>
+					<Link
+						className="border border-black rounded-ful block py-2 px-6 rounded-full"
+						href="/create/country"
+					>
+						Create Country
+					</Link>
 				</div>
 			</div>
 			{children}
