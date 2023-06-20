@@ -2,16 +2,34 @@ import Link from 'next/link';
 import { RESORT_LIST } from '../../DATA/RESORT_LIST';
 import { Sidebar } from './sidebar';
 import Image from 'next/image';
+import {useEffect, useState} from 'react'
+import { useRouter } from 'next/router';
+import useSWR from 'swr'
 
+const getResortList = async (url:string) => {
+	const res = await fetch(url)
+	const data = await res.json()
+	return data
+}
 export const ResortList = () => {
+
 	// *****
 	// TODO:
 	// 1. please change how to get the data using client-side fetching from "/api/resort/list"
 	// 2. check if the country parameter and filter the data accordingly
 
-	const data = RESORT_LIST;
-
 	// *****
+		const router = useRouter()
+		const country = router.query.country
+
+		const {data, error, isLoading} = useSWR<any>(
+			() => '/api/resort/list' + (country ? '?country=' + country : ''),
+			(key) => getResortList(key)
+		)
+
+		if (error) return <div>Failed to load</div>
+		if (!data) return <div>Loading...</div>
+	
 	return (
 		<section className="p-8 flex gap-16 justify-between">
 			<div className="flex-1">
@@ -19,7 +37,7 @@ export const ResortList = () => {
 					Resort List
 				</h1>
 				<div className="flex flex-col gap-12 w-fit">
-					{data.map((resort) => (
+					{data.map((resort : any) => (
 						<Link
 							key={resort.slug}
 							className="flex gap-32 text-xl shadow-lg items-center justify-between p-8 rounded-sm hover:bg-slate-200 transition-all"
