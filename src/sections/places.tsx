@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { Gallery } from '@/sections/gallery';
 import { COUNTRY_LIST } from '../../DATA/COUNTRY_LIST';
+import { Country } from '@prisma/client';
+import { Gallery } from '@/components/gallery';
 
-export const Places = ({
-	countryList,
-}: {
-	countryList: typeof COUNTRY_LIST;
-}) => {
+interface Props {
+	country_list : Country
+}
+
+export const Places = ({country_list} : Props) => {
 	return (
 		<section className="py-20 px-6">
 			<h2
@@ -28,8 +29,7 @@ export const Places = ({
 				Contact us today to schedule a consultation and see
 				how we can help transform your space.
 			</p>
-			<h3 className="text-2xl font-bold mb-6">Countries</h3>
-			<Gallery data={countryList} />
+			<Gallery country_list={country_list} />
 		</section>
 	);
 };
